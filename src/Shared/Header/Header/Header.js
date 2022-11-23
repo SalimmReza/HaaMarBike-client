@@ -40,6 +40,7 @@ const Header = () => {
                         </ul>
                     </li>
                     <li><Link>Item 3</Link></li>
+                    <li><Link to='/login'>Login</Link></li>
                 </ul>
             </div>
             <div className="navbar-end">
