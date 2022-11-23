@@ -1,4 +1,6 @@
+
 import React, { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import Button from '../../../Components/Button/Button';
 import { AuthContext } from '../../../Context/AuthProvider';
@@ -14,8 +16,11 @@ const Register = () => {
 
         const name = form.name.value;
         const email = form.email.value;
-        const photo = form.photo.value;
+        const accountType = form.account.value;
         const password = form.password.value;
+        // const user = { name, email, password, accountType }
+
+        // console.log(user);
 
         createUser(email, password)
             .then((userCredential) => {
@@ -23,31 +28,50 @@ const Register = () => {
                 const user = userCredential.user;
                 console.log(user)
                 form.reset();
+                toast.success('user created successfully')
                 setError('');
-                handleUpdateUser(name, photo);
-                // navigate(from, { replace: true });
-                // ...
+                const userInfo = {
+                    displayName: name,
+                    accountType: accountType
+                }
+                updateUserProfile(userInfo)
+                    .then(() => {
+                        sendUserToDB(name, email, accountType);
+                    })
+                    .catch(err => console.log("1", err));
+
+
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                setError(errorMessage)
+                setError("2", errorMessage)
                 // ..
             });
 
-        const handleUpdateUser = (name, photo) => {
-            const profile = {
-                displayName: name,
-                photoURL: photo
 
-            }
-
-            updateUserProfile(profile)
-                .then(() => { })
-                .catch(error => console.log(error))
-        }
 
     }
+
+    const sendUserToDB = (name, email, accountType) => {
+        const user = { name, email, accountType }
+        fetch(`http://localhost:5000/users`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
+
+    }
+
+
+
+
     return (
         <div>
             <div className="hero bg-base-200 p-10">
@@ -62,11 +86,12 @@ const Register = () => {
                             <input type="text" name='name' placeholder="Name" className="input input-bordered" />
                         </div>
                         <div className="form-control">
+                            <label for="account" className='font-medium'>Select Your Account Type:</label>
+                            <select name="account" id="account" className='border-2 rounded-lg'>
+                                <option value="User">User</option>
+                                <option value="Seller">Seller</option>
 
-                            <label className="label">
-                                <span className="label-text font-medium">Photo URL</span>
-                            </label>
-                            <input type="text" name='photo' placeholder="PhotURL" className="input input-bordered" />
+                            </select>
                         </div>
                         <div className="form-control">
                             <label className="label">
