@@ -6,7 +6,7 @@ const Home = () => {
 
     const [categoryNames, setCategoryName] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/category`)
+        fetch(`http://localhost:5000/categoryName`)
             .then(res => res.json())
             .then(data => setCategoryName(data))
     }, [])
