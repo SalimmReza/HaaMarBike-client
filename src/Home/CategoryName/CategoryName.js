@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../../Components/Button/Button';
 
 const CategoryName = ({ categoryName }) => {
-    console.log(categoryName);
+    // console.log(categoryName);
 
     const navigate = useNavigate();
 

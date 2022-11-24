@@ -31,8 +31,8 @@ const CategoryDetails2 = ({ CD, setDetails }) => {
                     <p className='font-bold'>Location: {sellers_location}</p>
                     <p className='font-bold'>Time Posted: {time_posted}</p>
                     <div className="card-actions justify-end mt-4">
-                        <div className="badge badge-outline">Original Price: {original_price}</div>
-                        <div className="badge badge-outline">Resale Price: {resale_price}</div>
+                        <div className="badge badge-outline">Original Price: $  {original_price}</div>
+                        <div className="badge badge-outline">Resale Price: $  {resale_price}</div>
                     </div>
 
 
