@@ -16,6 +16,7 @@ const Header = () => {
     const items = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/login'>Login</Link></li>
+        <li><Link to='/DashBoard'>DashBoard</Link></li>
         {
             user?.email ?
                 <li><Link><button
@@ -47,7 +48,9 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link className="btn">Get started</Link>
+                <label htmlFor="my-drawer-2" tabIndex={1} className="btn btn-ghost lg:hidden justify-end">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                </label>
             </div>
         </div>
     );

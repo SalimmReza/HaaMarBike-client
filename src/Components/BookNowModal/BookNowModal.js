@@ -27,6 +27,7 @@ const BookNowModal = ({ details, setDetails }) => {
         e.preventDefault();
         const form = e.target;
         const userName = form.userName.value;
+        const image = form.image.value;
         const email = form.email.value;
         const itemName = form.itemName.value;
         const originalPrice = form.originalPrice.value;
@@ -41,6 +42,7 @@ const BookNowModal = ({ details, setDetails }) => {
 
         const booking = {
             userName,
+            image,
             email,
             itemName,
             originalPrice,
@@ -62,6 +64,7 @@ const BookNowModal = ({ details, setDetails }) => {
                 console.log(data);
                 if (data.acknowledged) {
                     toast.success('Booked')
+                    navigate('/dashBoard')
 
 
                 }
@@ -69,7 +72,7 @@ const BookNowModal = ({ details, setDetails }) => {
                     toast.error(data.message)
                 }
             })
-        navigate('/')
+
 
 
     }
@@ -90,6 +93,12 @@ const BookNowModal = ({ details, setDetails }) => {
                                                 <label className="label">
                                                     <span className="label-text">User Name</span>
                                                 </label>
+                                                <input
+                                                    type="text"
+                                                    name='image'
+                                                    defaultValue={image}
+                                                    disabled
+                                                    className="input input-bordered hidden" />
                                                 <input type="text"
                                                     name='userName'
                                                     defaultValue={user?.displayName}
@@ -102,7 +111,6 @@ const BookNowModal = ({ details, setDetails }) => {
                                                     <span className="label-text">Email</span>
                                                 </label>
                                                 <input type="text"
-                                                    value='email'
                                                     name='email'
                                                     defaultValue={user?.email}
                                                     disabled
