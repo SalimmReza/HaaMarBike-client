@@ -1,13 +1,17 @@
 
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Button from '../../../Components/Button/Button';
 import { AuthContext } from '../../../Context/AuthProvider';
 
 const Register = () => {
     const [error, setError] = useState("")
     const { createUser, updateUserProfile, googleSignIn } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const from = location.state?.from?.pathname || '/'
 
     const handleRegister = e => {
         e.preventDefault();
@@ -37,6 +41,7 @@ const Register = () => {
                 updateUserProfile(userInfo)
                     .then(() => {
                         sendUserToDB(name, email, accountType);
+                        navigate(from, { replace: true });
                     })
                     .catch(err => console.log("1", err));
 

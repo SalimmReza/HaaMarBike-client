@@ -30,6 +30,12 @@ const CategoryName = ({ categoryName }) => {
                         classes='px-10'
                         handler={() => handleDetails(category_id)}
                     >Click To View Items</Button>
+
+                    <label
+                        htmlFor="booking-modal"
+                        className="btn btn-primary text-white"
+
+                    >Book Appointment</label>
                 </div>
             </div>
         </div>

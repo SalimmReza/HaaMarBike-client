@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
+import BookNowModal from '../../Components/BookNowModal/BookNowModal';
 import Button from '../../Components/Button/Button';
 
-const CategoryDetails2 = ({ CD }) => {
+const CategoryDetails2 = ({ CD, setDetails }) => {
+
     // console.log(CD);
     const { category_id,
         category_name,
@@ -33,9 +35,17 @@ const CategoryDetails2 = ({ CD }) => {
                         <div className="badge badge-outline">Resale Price: {resale_price}</div>
                     </div>
 
-                    <Button classes='w-full mt-7'>Book Now</Button>
+
+                    <Button
+                        classes='px-10 mt-6'
+                    > <label
+                        onClick={() => setDetails(CD)}
+                        htmlFor="book-nowModal"
+                    >Book Now</label></Button>
                 </div>
             </div>
+
+
         </div>
     );
 };

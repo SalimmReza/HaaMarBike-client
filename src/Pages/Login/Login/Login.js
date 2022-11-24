@@ -1,10 +1,15 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Button from '../../../Components/Button/Button';
 import { AuthContext } from '../../../Context/AuthProvider';
 
 const Login = () => {
     const [error, setError] = useState('');
+
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    // const from = location.state?.from?.pathname || '/'
 
 
     const { loginIn, googleSignIn } = useContext(AuthContext);
@@ -23,8 +28,8 @@ const Login = () => {
                 console.log(user);
                 form.reset();
                 setError('');
-                // setLoginJWT(user);
                 // navigate(from, { replace: true });
+                navigate('/')
 
             })
             .catch((error) => {

@@ -4,6 +4,7 @@ import Home from "../Home/Home/Home";
 import Main from "../Layout/Main";
 import Login from "../Pages/Login/Login/Login";
 import Register from '../Pages/Login/Register/Register'
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -24,7 +25,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'categoryDetails',
-                element: <CategoryDetails></CategoryDetails>,
+                element: <PrivateRoute><CategoryDetails></CategoryDetails></PrivateRoute>,
 
             }
         ]
