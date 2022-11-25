@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../../Context/AuthProvider';
 
 const MyProducts = () => {
@@ -7,15 +8,33 @@ const MyProducts = () => {
     const { user } = useContext(AuthContext);
     // console.log(user.email);
 
-    const { data: category = [] } = useQuery({
+    const { data: category = [], refetch } = useQuery({
         queryKey: ['category', user?.email],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/category?email=${user?.email}`)
             const data = await res.json()
-            // console.log(category);
+            console.log(category);
+
             return data;
+
         }
     })
+
+
+    const handleDelete = id => {
+        console.log(id);
+        fetch(`http://localhost:5000/category/${id}`, {
+            method: 'DELETE',
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    refetch();
+                    toast.success(`Deleted Sucessfully`)
+
+                }
+            })
+    }
 
 
     return (
@@ -46,6 +65,7 @@ const MyProducts = () => {
 
                                             <div>
                                                 <div className="font-bold">{category?.item_name}</div>
+                                                <div className="font-bold">{category?._id}</div>
 
                                             </div>
                                         </div>
@@ -58,7 +78,9 @@ const MyProducts = () => {
                                     <td>{category?.sellers_name}</td>
                                     <td>{category?.phone}</td>
                                     <th>
-                                        <button className="btn btn-ghost btn-xs">Pay</button>
+                                        <button
+                                            onClick={() => handleDelete(category._id)}
+                                            className="btn bg-red-600 btn-xs">Delete</button>
                                     </th>
                                 </tr>)
 

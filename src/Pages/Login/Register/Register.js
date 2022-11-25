@@ -93,8 +93,8 @@ const Register = () => {
                         <div className="form-control">
                             <label for="account" className='font-medium'>Select Your Account Type:</label>
                             <select name="account" id="account" className='border-2 rounded-lg'>
-                                <option value="User">User</option>
-                                <option value="Seller">Seller</option>
+                                <option value="user">User</option>
+                                <option value="seller">Seller</option>
 
                             </select>
                         </div>
