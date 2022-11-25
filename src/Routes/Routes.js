@@ -3,6 +3,7 @@ import CategoryDetails from "../Home/CategoryDetails/CategoryDetails";
 import Home from "../Home/Home/Home";
 import DashBoardLayout from "../Layout/DashBoardLayout";
 import Main from "../Layout/Main";
+import AddProducts from "../Pages/DashBoard/AddProducts/AddProducts";
 import MyBookings from "../Pages/DashBoard/MyBookings/MyBookings";
 import Login from "../Pages/Login/Login/Login";
 import Register from '../Pages/Login/Register/Register'
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
             {
                 path: '/dashBoard',
                 element: <MyBookings></MyBookings>
+            },
+            {
+                path: '/dashBoard/addProducts',
+                element: <AddProducts></AddProducts>
             }
         ]
     }
