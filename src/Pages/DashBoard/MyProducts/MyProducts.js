@@ -13,7 +13,7 @@ const MyProducts = () => {
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/category?email=${user?.email}`)
             const data = await res.json()
-            console.log(category);
+            // console.log(category);
 
             return data;
 
@@ -30,7 +30,23 @@ const MyProducts = () => {
             .then(data => {
                 if (data.deletedCount > 0) {
                     refetch();
-                    toast.success(`Deleted Sucessfully`)
+                    toast.success(`Deleted Successful`)
+
+                }
+            })
+    }
+
+    const handleAdvertise = (id) => {
+        console.log(id);
+        fetch(`http://localhost:5000/category/${id}`, {
+            method: 'PUT',
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.acknowledged) {
+                    refetch()
+                    toast.success('Advertise Successful')
 
                 }
             })
@@ -38,7 +54,7 @@ const MyProducts = () => {
 
 
     return (
-        <div className='lg:w-[50%] lg:mx-auto'>
+        <div className='lg:w-[60%] lg:mx-auto'>
             <h1>My Products</h1>
 
 
@@ -81,6 +97,19 @@ const MyProducts = () => {
                                         <button
                                             onClick={() => handleDelete(category._id)}
                                             className="btn bg-red-600 btn-xs">Delete</button>
+                                    </th>
+                                    <th>
+
+                                        {
+                                            category.advertise ? <button
+                                                onClick={() => handleAdvertise(category._id)}
+                                                className="btn bg-yellow-600 btn-xs">Advertised</button>
+                                                :
+                                                <button
+                                                    onClick={() => handleAdvertise(category._id)}
+                                                    className="btn bg-green-600 btn-xs">Advertise</button>
+                                        }
+
                                     </th>
                                 </tr>)
 

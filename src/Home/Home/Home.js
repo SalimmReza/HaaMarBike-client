@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import CategoryName from '../CategoryName/CategoryName';
 import HomeBanner from '../HomeBanner/HomeBanner';
+import Advertise from './Advertise/Advertise';
 
 const Home = () => {
 
@@ -9,6 +10,13 @@ const Home = () => {
         fetch(`http://localhost:5000/categoryName`)
             .then(res => res.json())
             .then(data => setCategoryName(data))
+    }, [])
+    const [advertises, setAdvertises] = useState([]);
+    useEffect(() => {
+        fetch(`http://localhost:5000/category`)
+            .then(res => res.json())
+            .then(data => setAdvertises(data))
+
     }, [])
 
 
@@ -25,7 +33,14 @@ const Home = () => {
                             categoryName={categoryName}
                         ></CategoryName>)
                     }
+
                 </div>
+                {
+                    advertises.map(advertise => <Advertise
+                        key={advertise._id}
+                        advertises={advertise}
+                    ></Advertise>)
+                }
             </div>
 
 

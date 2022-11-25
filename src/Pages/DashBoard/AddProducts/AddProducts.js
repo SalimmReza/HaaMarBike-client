@@ -1,16 +1,18 @@
 import userEvent from '@testing-library/user-event';
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider';
 
 const AddProducts = () => {
+    const navigate = useNavigate();
 
     const { user } = useContext(AuthContext);
     const handleBookNowSubmit = e => {
         e.preventDefault();
         const form = e.target;
         const item_name = form.item_name.value
-        // const image =form.image.value
+        const image = form.image.value
         const year_of_use = form.year_of_use.value
         const email = form.email.value
         const sellers_location = form.sellers_location.value
@@ -25,6 +27,7 @@ const AddProducts = () => {
 
         const Product = {
             email,
+            image,
             item_name, year_of_use, sellers_location, original_Price, resale_price, sellers_name, category_id, condition, phone, category_name, description
         }
 
@@ -42,7 +45,7 @@ const AddProducts = () => {
                 console.log(data);
                 if (data.acknowledged) {
                     toast.success('Booked')
-                    // navigate('/dashBoard')
+                    navigate('/dashboard/myProducts')
                 }
                 else {
                     toast.error(data.message)
