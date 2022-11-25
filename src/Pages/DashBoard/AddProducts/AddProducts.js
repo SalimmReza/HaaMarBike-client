@@ -43,8 +43,6 @@ const AddProducts = () => {
                 if (data.acknowledged) {
                     toast.success('Booked')
                     // navigate('/dashBoard')
-
-
                 }
                 else {
                     toast.error(data.message)
