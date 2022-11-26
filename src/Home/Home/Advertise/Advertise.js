@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Advertise = ({ advertises }) => {
-    console.log(advertises);
+    // console.log(advertises);
     return (
         <div>
             {

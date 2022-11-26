@@ -13,13 +13,12 @@ const DashBoardLayout = ({ sel }) => {
     // console.log(sel);
 
     const { user } = useContext(AuthContext);
-    // console.log(user);
-    const [isSeller] = useSeller(user?.email);
-    // console.log(isSeller);
-    const [isAdmin] = useAdmin(user?.email);
-    // const [isUser] = useUser(user?.email);
-
-    // console.log(isSeller);
+    const [checkUsers, setCheckUsers] = useState({})
+    useEffect(() => {
+        fetch(`http://localhost:5000/users/${user?.email}`)
+            .then(res => res.json())
+            .then(data => setCheckUsers(data))
+    }, [user?.email])
 
 
 
@@ -49,9 +48,24 @@ const DashBoardLayout = ({ sel }) => {
 
 
 
-                        <><li><Link to='/dashboard/myProducts'>My Products</Link></li>
-                            <li><Link to='/dashboard/allSellers'>All Sellers</Link></li>
-                            <li><Link to='/dashboard/allBuyers'>All Buyers</Link></li></>
+                        <li><Link to='/dashboard/myProducts'>My Products</Link></li>
+                        <li><Link to='/dashboard/allSellers'>All Sellers</Link></li>
+                        <li><Link to='/dashboard/allBuyers'>All Buyers</Link></li>
+
+                        {
+                            checkUsers.isSeller &&
+
+                            <li><Link to='/dashboard/allBuyers'>seller</Link></li>
+                        }
+                        {
+                            checkUsers.isUser &&
+                            <li><Link to='/dashboard/allBuyers'>user</Link></li>
+                        }
+
+
+
+
+
 
 
 
