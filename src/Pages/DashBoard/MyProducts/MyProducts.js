@@ -54,11 +54,11 @@ const MyProducts = () => {
 
 
     return (
-        <div className='lg:w-[60%] lg:mx-auto'>
-            <h1>My Products</h1>
+        <div className='lg:w-[70%] lg:mx-auto bg-white'>
+            <h1 className='text-black font-semibold text-2xl my-10'>My Products</h1>
 
 
-            <div>
+            <div className=''>
                 <div className="overflow-x-auto w-full">
                     <table className="table w-full">
 
@@ -71,7 +71,7 @@ const MyProducts = () => {
                                 <th>Phone Number</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody className='mb-10'>
                             {
                                 category &&
                                 category?.map((category, i) => <tr>
