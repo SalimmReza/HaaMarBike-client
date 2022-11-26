@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import Button from '../../../Components/Button/Button';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee, faCheckCircle } from '@fortawesome/free-solid-svg-icons'
+
 const AllSellers = () => {
 
 
@@ -33,6 +36,22 @@ const AllSellers = () => {
             })
     }
 
+    const handleVerify = (id) => {
+        console.log(id);
+        fetch(`http://localhost:5000/users/${id}`, {
+            method: 'PUT',
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.acknowledged) {
+
+                    toast.success('Verify Successful')
+
+                }
+            })
+    }
+
 
 
 
@@ -50,10 +69,24 @@ const AllSellers = () => {
                             <h2 className=" text-black">{seller.name}</h2>
                             <p className=" text-black">{seller.email}</p>
                             <div className="flex my-4 gap-10 justify-center">
+
+
                                 <Button
                                     handler={() => handleDelete(seller._id)}
                                     className="btn btn-primary">Delete</Button>
-                                <Button className="btn btn-primary">Verify</Button>
+
+                                {
+                                    seller.verified ?
+                                        <Button
+                                            className="btn btn-primary bg-yellow-400">Verified <FontAwesomeIcon className='text-green-400 ml-2' icon={faCheckCircle}></FontAwesomeIcon></Button>
+
+                                        :
+                                        <Button
+                                            handler={() => handleVerify(seller._id)}
+                                            className="btn btn-primary">UnVerified</Button>
+                                }
+
+
 
                             </div>
                         </div>

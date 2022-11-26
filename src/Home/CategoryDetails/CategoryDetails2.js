@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import BookNowModal from '../../Components/BookNowModal/BookNowModal';
 import Button from '../../Components/Button/Button';
 
@@ -15,6 +15,11 @@ const CategoryDetails2 = ({ CD, setDetails }) => {
         year_of_use,
         time_posted,
         sellers_name } = CD;
+
+    console.log();
+
+
+
     return (
         <div>
 
@@ -27,6 +32,7 @@ const CategoryDetails2 = ({ CD, setDetails }) => {
                         {item_name}
                         <div className="badge badge-secondary">Years Used : <span className='text-red-500 font-bold text-2xl'>{year_of_use}</span> </div>
                     </h2>
+                    {/* <p>{email.email}</p> */}
                     <p className='font-bold'>Sellers Name: {sellers_name}</p>
                     <p className='font-bold'>Location: {sellers_location}</p>
                     <p className='font-bold'>Time Posted: {time_posted}</p>

@@ -1,13 +1,20 @@
 import userEvent from '@testing-library/user-event';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider';
 
-const AddProducts = () => {
+const AddProducts = ({ email }) => {
+
+    console.log(email);
     const navigate = useNavigate();
 
+
+
+
+
     const { user } = useContext(AuthContext);
+    // console.log(user);
     const handleBookNowSubmit = e => {
         e.preventDefault();
         const form = e.target;
@@ -151,9 +158,9 @@ const AddProducts = () => {
                                             <span className="label-text">Category </span>
                                         </label>
                                         <select name="category_id" id="account" className='border-2 rounded-lg w-[220px]'>
-                                            <option value="01">01</option>
-                                            <option value="02">02</option>
-                                            <option value="03">03</option>
+                                            <option value="01">01 Sports</option>
+                                            <option value="02">02 Naked</option>
+                                            <option value="03">03 Mountain</option>
 
                                         </select>
                                     </div>
@@ -182,7 +189,7 @@ const AddProducts = () => {
                                         </label>
                                         <input type="text"
                                             name='category_name'
-                                            placeholder='Mountain Bike or Naked Bike or Sports Bike'
+                                            placeholder='Sports Bike or Naked Bike or Mountain'
                                             className="input input-bordered w-[450px]" required />
                                     </div>
 

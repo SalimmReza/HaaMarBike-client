@@ -21,21 +21,16 @@ const CategoryName = ({ categoryName }) => {
     return (
         <div >
             <div
-
-                className="card w-full shadow-lg image-full">
+                className="card w-full  image-full">
                 <figure><img src={img} alt="Shoes" /></figure>
                 <div className="card-body mt-10">
-                    <h2 className="text-center font-extrabold text-3xl">{category}</h2>
+                    <h2 className="text-center text-white font-extrabold text-3xl">{category}</h2>
                     <Button
-                        classes='px-10'
+                        classes='px-10 text-white'
                         handler={() => handleDetails(category_id)}
                     >Click To View Items</Button>
 
-                    <label
-                        htmlFor="booking-modal"
-                        className="btn btn-primary text-white"
 
-                    >Book Appointment</label>
                 </div>
             </div>
         </div>

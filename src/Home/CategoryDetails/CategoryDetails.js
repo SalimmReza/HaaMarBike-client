@@ -20,6 +20,14 @@ const CategoryDetails = () => {
 
 
     // console.log(categoryDetails.resale_price);
+
+
+    const [emails, setEmail] = useState([]);
+    useEffect(() => {
+        fetch(`http://localhost:5000/users`)
+            .then(res => res.json())
+            .then(data => setEmail(data))
+    }, [])
     return (
         <div>
             <h1 className='my-10 text-white text-4xl font-semibold'>{categoryDetails[0]?.category_name}</h1>
@@ -31,12 +39,16 @@ const CategoryDetails = () => {
                         setDetails={setDetails}
                     ></CategoryDetails2>)
                 }
-
+                {/* {
+                    emails.map(email => <CategoryDetails2
+                        key={email._id}
+                        email={email}
+                    ></CategoryDetails2>)
+                } */}
             </div>
             {
                 details &&
                 <BookNowModal
-
                     details={details}
                     setDetails={setDetails}
                 // refetch={refetch}

@@ -102,7 +102,6 @@ const MyProducts = () => {
 
                                         {
                                             category.advertise ? <button
-                                                onClick={() => handleAdvertise(category._id)}
                                                 className="btn bg-yellow-600 btn-xs">Advertised</button>
                                                 :
                                                 <button

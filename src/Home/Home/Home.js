@@ -26,14 +26,17 @@ const Home = () => {
                 <HomeBanner></HomeBanner>
             </div>
             <div className='w-[80%] mx-auto'>
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10'>
-                    {
-                        categoryNames.map(categoryName => <CategoryName
-                            key={categoryName._id}
-                            categoryName={categoryName}
-                        ></CategoryName>)
-                    }
+                <div>
+                    <h1 className='my-16 font-extrabold text-4xl'>Categories</h1>
+                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10'>
+                        {
+                            categoryNames.map(categoryName => <CategoryName
+                                key={categoryName._id}
+                                categoryName={categoryName}
+                            ></CategoryName>)
+                        }
 
+                    </div>
                 </div>
                 {
                     advertises.map(advertise => <Advertise

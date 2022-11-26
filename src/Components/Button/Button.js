@@ -5,7 +5,7 @@ const Button = ({ children, classes, handler }) => {
         <div>
             <button
                 onClick={handler}
-                className={`hover:text-gray-100 btn bg-gradient-to-r from-cyan-500 to-blue-500e ${classes}`}
+                className={`hover:text-gray-100 btn bg-gradient-to-r from-cyan-500 to-blue-500e text-white ${classes}`}
             >
                 {children}
             </button>
