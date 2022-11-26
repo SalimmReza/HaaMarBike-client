@@ -59,10 +59,10 @@ const AllSellers = () => {
         <div className='p-10' >
             <h1 className='text-white font-semibold text-2xl my-10'>All Sellers</h1>
 
-            <div className='grid  grid-cols-1  lg:grid-cols-4 '>
+            <div className='grid  grid-cols-1 md:grid-cols-3  lg:grid-cols-4 mb-10 '>
                 {
                     sellers.map(seller => <div
-                        className="card w-[300px] bg-base-100 shadow-xl"
+                        className="card w-[300px] bg-base-100 mb-7 shadow-xl"
                         key={sellers._id}
                     >
                         <div className=" bg-white rounded">

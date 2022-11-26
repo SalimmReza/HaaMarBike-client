@@ -11,7 +11,9 @@ const BookNowModal = ({ details, setDetails }) => {
     const { user } = useContext(AuthContext)
     // displayName, email
     // console.log(details);
-    const { category_id,
+    const {
+        _id,
+        category_id,
         category_name,
         image,
         item_name,
@@ -41,6 +43,7 @@ const BookNowModal = ({ details, setDetails }) => {
         // console.log(result);
 
         const booking = {
+            categoryId: _id,
             userName,
             image,
             email,

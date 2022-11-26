@@ -38,22 +38,24 @@ const Home = () => {
 
                     </div>
                 </div>
-                <div>
-                    <h1 className='my-16 font-extrabold text-4xl'>Product Advertisement</h1>
-                    <div>
+                <h1 className='my-16 font-extrabold text-4xl'>Product Advertisement</h1>
 
-                        {
-                            advertises.map(advertise => <Advertise
-                                key={advertise._id}
-                                advertises={advertise}
-                            ></Advertise>)
-                        }
-                    </div>
+
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
+
+
+                    {
+                        advertises.map(advertise => <Advertise
+                            key={advertise._id}
+                            advertises={advertise}
+                        ></Advertise>).reverse()
+                    }
                 </div>
             </div>
-
-
         </div>
+
+
+
     );
 };
 

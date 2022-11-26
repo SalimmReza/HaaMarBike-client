@@ -58,7 +58,13 @@ const MyBookings = () => {
                                 </td>
                                 <td>{booking?.sellerName}</td>
                                 <th>
-                                    <Link to={`/dashBoard/payment/${booking._id}`}> <button className="btn btn-ghost btn-xs">Pay</button></Link>
+
+                                    {
+                                        booking?.paid ? <Link to={`/dashBoard/payment/${booking._id}`}> <button className="btn bg-green-400 text-white btn-xs">Paid</button></Link> :
+                                            <Link to={`/dashBoard/payment/${booking._id}`}> <button className="btn bg-red-500 text-white btn-xs">Pay</button></Link>
+
+                                    }
+
                                 </th>
                             </tr>)
 

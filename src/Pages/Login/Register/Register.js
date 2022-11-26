@@ -1,4 +1,4 @@
-
+import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -12,6 +12,29 @@ const Register = () => {
     const navigate = useNavigate();
 
     const from = location.state?.from?.pathname || '/'
+
+
+    const provider = new GoogleAuthProvider();
+    const handleGoogleClick = () => {
+        googleSignIn(provider)
+            .then((result) => {
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                const user = result.user;
+                console.log(user);
+                setError('');
+                navigate(from, { replace: true });
+
+            }).catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                const email = error.customData.email;
+                const credential = GoogleAuthProvider.credentialFromError(error);
+                setError(errorMessage);
+
+            });
+    }
+
 
     const handleRegister = e => {
         e.preventDefault();
@@ -77,6 +100,9 @@ const Register = () => {
 
 
 
+
+
+
     return (
         <div>
             <div className="hero bg-base-200 p-10">
@@ -123,7 +149,9 @@ const Register = () => {
 
                         <div className="avatar gap-4 flex justify-center cursor-pointer">
 
-                            <div className="w-9 h-9 rounded-full">
+                            <div
+                                onClick={handleGoogleClick}
+                                className="w-9 h-9 rounded-full">
                                 <img
                                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSK5q0FP74VV9wbfwP378_7kj7iDomHuKrxkXsxDdUT28V9dlVMNUe-EMzaLwaFhneeuZI&usqp=CAU" alt='' />
                             </div>

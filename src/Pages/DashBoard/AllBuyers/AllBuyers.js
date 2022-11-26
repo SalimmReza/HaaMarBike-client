@@ -38,7 +38,7 @@ const AllBuyers = () => {
             <div className='grid  grid-cols-1  lg:grid-cols-4 '>
                 {
                     buyers.map(buyer => <div
-                        className="card w-[300px] bg-base-100 shadow-xl"
+                        className="card w-[300px] bg-base-100 shadow-xl mb-7"
                         key={buyer._id}
                     >
                         <div className=" bg-white rounded mb-3">

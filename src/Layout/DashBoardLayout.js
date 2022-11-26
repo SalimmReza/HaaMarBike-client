@@ -13,6 +13,7 @@ const DashBoardLayout = ({ sel }) => {
     // console.log(sel);
 
     const { user } = useContext(AuthContext);
+    // console.log(user.emailVerified);
     const [checkUsers, setCheckUsers] = useState({})
     useEffect(() => {
         fetch(`http://localhost:5000/users/${user?.email}`)
@@ -37,6 +38,7 @@ const DashBoardLayout = ({ sel }) => {
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content ">
                     <Outlet></Outlet>
+
                 </div>
                 <div className="drawer-side shadow-2xl">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
@@ -52,7 +54,9 @@ const DashBoardLayout = ({ sel }) => {
                         <li><Link to='/dashboard/allSellers'>All Sellers</Link></li>
                         <li><Link to='/dashboard/allBuyers'>All Buyers</Link></li>
 
-                        {
+
+                        <li><Link to='/dashboard/allBuyers'>all</Link></li>
+                        {/* {
                             checkUsers.isSeller &&
 
                             <li><Link to='/dashboard/allBuyers'>seller</Link></li>
@@ -61,6 +65,19 @@ const DashBoardLayout = ({ sel }) => {
                             checkUsers.isUser &&
                             <li><Link to='/dashboard/allBuyers'>user</Link></li>
                         }
+
+                        {
+                            checkUsers.isAdmin &&
+                            <li><Link to='/dashboard/allBuyers'>Admin</Link></li>
+                        }
+
+                        {
+                            user?.emailVerified ? <>
+                                <li><Link to='/dashboard/allBuyers'>user</Link></li>
+                            </> :
+                                ""
+
+                        } */}
 
 
 

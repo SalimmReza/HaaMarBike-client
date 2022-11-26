@@ -59,8 +59,8 @@ const MyProducts = () => {
 
 
             <div className=''>
-                <div className="overflow-x-auto w-full">
-                    <table className="table w-full">
+                <div className="overflow-x-auto w-[400px] lg:w-full">
+                    <table className="table w-[100px] lg:w-full">
 
                         <thead>
                             <tr>
@@ -69,6 +69,8 @@ const MyProducts = () => {
                                 <th>Price</th>
                                 <th>seller Name</th>
                                 <th>Phone Number</th>
+                                <th>Delete</th>
+                                <th>Advertise</th>
                             </tr>
                         </thead>
                         <tbody className='mb-10'>

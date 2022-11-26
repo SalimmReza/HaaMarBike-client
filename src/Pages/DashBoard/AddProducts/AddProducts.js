@@ -6,7 +6,7 @@ import { AuthContext } from '../../../Context/AuthProvider';
 
 const AddProducts = ({ email }) => {
 
-    console.log(email);
+    // console.log(email);
     const navigate = useNavigate();
 
 
@@ -190,7 +190,7 @@ const AddProducts = ({ email }) => {
                                         <input type="text"
                                             name='category_name'
                                             placeholder='Sports Bike or Naked Bike or Mountain'
-                                            className="input input-bordered w-[450px]" required />
+                                            className="input input-bordered lg:w-[450px]" required />
                                     </div>
 
 
