@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider';
 
 const MyBookings = () => {
@@ -57,7 +58,7 @@ const MyBookings = () => {
                                 </td>
                                 <td>{booking?.sellerName}</td>
                                 <th>
-                                    <button className="btn btn-ghost btn-xs">Pay</button>
+                                    <Link to={`/dashBoard/payment/${booking._id}`}> <button className="btn btn-ghost btn-xs">Pay</button></Link>
                                 </th>
                             </tr>)
 

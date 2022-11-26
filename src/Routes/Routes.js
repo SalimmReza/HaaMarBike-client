@@ -8,6 +8,7 @@ import AllBuyers from "../Pages/DashBoard/AllBuyers/AllBuyers";
 import AllSellers from "../Pages/DashBoard/AllSellers/AllSellers";
 import MyBookings from "../Pages/DashBoard/MyBookings/MyBookings";
 import MyProducts from "../Pages/DashBoard/MyProducts/MyProducts";
+import Payment from "../Pages/DashBoard/Payment/Payment";
 import Login from "../Pages/Login/Login/Login";
 import Register from '../Pages/Login/Register/Register'
 import PrivateRoute from "./PrivateRoute";
@@ -60,6 +61,11 @@ export const router = createBrowserRouter([
             {
                 path: '/dashBoard/AllBuyers',
                 element: <AllBuyers></AllBuyers>
+            },
+            {
+                path: '/dashBoard/payment/:id',
+                element: <Payment></Payment>,
+                loader: ({ params }) => fetch(`http://localhost:5000/booking/${params.id}`)
             }
         ]
     }

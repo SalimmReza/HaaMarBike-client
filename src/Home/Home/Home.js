@@ -38,12 +38,18 @@ const Home = () => {
 
                     </div>
                 </div>
-                {
-                    advertises.map(advertise => <Advertise
-                        key={advertise._id}
-                        advertises={advertise}
-                    ></Advertise>)
-                }
+                <div>
+                    <h1 className='my-16 font-extrabold text-4xl'>Product Advertisement</h1>
+                    <div>
+
+                        {
+                            advertises.map(advertise => <Advertise
+                                key={advertise._id}
+                                advertises={advertise}
+                            ></Advertise>)
+                        }
+                    </div>
+                </div>
             </div>
 
 
