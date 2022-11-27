@@ -40,31 +40,31 @@ export const router = createBrowserRouter([
 
     {
         path: '/dashBoard',
-        element: <DashBoardLayout></DashBoardLayout>,
+        element: <PrivateRoute><DashBoardLayout></DashBoardLayout></PrivateRoute>,
         children: [
             {
                 path: '/dashBoard',
-                element: <MyBookings></MyBookings>
+                element: <PrivateRoute><MyBookings></MyBookings></PrivateRoute>
             },
             {
                 path: '/dashBoard/addProducts',
-                element: <AddProducts></AddProducts>
+                element: <PrivateRoute><AddProducts></AddProducts></PrivateRoute>
             },
             {
                 path: '/dashBoard/myProducts',
-                element: <MyProducts></MyProducts>
+                element: <PrivateRoute> <MyProducts></MyProducts></PrivateRoute>
             },
             {
                 path: '/dashBoard/allSellers',
-                element: <AllSellers></AllSellers>
+                element: <PrivateRoute><AllSellers></AllSellers></PrivateRoute>
             },
             {
                 path: '/dashBoard/AllBuyers',
-                element: <AllBuyers></AllBuyers>
+                element: <PrivateRoute><AllBuyers></AllBuyers></PrivateRoute>
             },
             {
                 path: '/dashBoard/payment/:id',
-                element: <Payment></Payment>,
+                element: <PrivateRoute><Payment></Payment></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/booking/${params.id}`)
             }
         ]

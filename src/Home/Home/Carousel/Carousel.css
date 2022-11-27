@@ -1,0 +1,29 @@
+.banner {
+    height: 60vh;
+    background-image: url("https://images.unsplash.com/photo-1609202748711-feef2cdc7da3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    padding-top: 10%;
+
+}
+
+.banner-highlights {
+    padding: 70px 0;
+    background: rgba(0, 0, 0, 0.7);
+    text-align: center;
+    color: white;
+}
+
+
+.booking-btn {
+    margin-top: 10px;
+    width: 100px;
+    padding: 8px 0;
+    outline: none;
+    border: 2px solid white;
+    border-radius: 10px;
+    background: transparent;
+    color: white;
+
+}

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import CategoryName from '../CategoryName/CategoryName';
 import HomeBanner from '../HomeBanner/HomeBanner';
 import Advertise from './Advertise/Advertise';
+import Carousel from './Carousel/Carousel';
 
 const Home = () => {
 
@@ -52,6 +53,7 @@ const Home = () => {
                     }
                 </div>
             </div>
+            <Carousel></Carousel>
         </div>
 
 
