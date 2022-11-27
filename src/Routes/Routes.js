@@ -3,6 +3,7 @@ import CategoryDetails from "../Home/CategoryDetails/CategoryDetails";
 import Home from "../Home/Home/Home";
 import DashBoardLayout from "../Layout/DashBoardLayout";
 import Main from "../Layout/Main";
+import Blog from "../Pages/Blog/Blog";
 import AddProducts from "../Pages/DashBoard/AddProducts/AddProducts";
 import AllBuyers from "../Pages/DashBoard/AllBuyers/AllBuyers";
 import AllSellers from "../Pages/DashBoard/AllSellers/AllSellers";
@@ -27,9 +28,14 @@ export const router = createBrowserRouter([
                 element: <Login></Login>
             },
             {
-                path: 'register',
+                path: '/register',
                 element: <Register></Register>,
             },
+            {
+                path: '/blog',
+                element: <Blog></Blog>
+            },
+
             {
                 path: 'categoryDetails',
                 element: <PrivateRoute><CategoryDetails></CategoryDetails></PrivateRoute>,

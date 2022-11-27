@@ -1,3 +1,4 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Button from '../../../Components/Button/Button';
@@ -9,10 +10,33 @@ const Login = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
-    // const from = location.state?.from?.pathname || '/'
+    const from = location.state?.from?.pathname || '/'
 
 
     const { loginIn, googleSignIn } = useContext(AuthContext);
+
+
+    const provider = new GoogleAuthProvider();
+    const handleGoogleClick = () => {
+        googleSignIn(provider)
+            .then((result) => {
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                const user = result.user;
+                console.log(user);
+                setError('');
+                // navigate(from, { replace: true });
+                navigate('/')
+
+            }).catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                const email = error.customData.email;
+                const credential = GoogleAuthProvider.credentialFromError(error);
+                setError(errorMessage);
+
+            });
+    }
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -74,7 +98,9 @@ const Login = () => {
 
                         <div className="avatar gap-4 flex justify-center cursor-pointer">
 
-                            <div className="w-9 h-9 rounded-full">
+                            <div
+                                onClick={handleGoogleClick}
+                                className="w-9 h-9 rounded-full">
                                 <img
                                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSK5q0FP74VV9wbfwP378_7kj7iDomHuKrxkXsxDdUT28V9dlVMNUe-EMzaLwaFhneeuZI&usqp=CAU" alt='' />
                             </div>

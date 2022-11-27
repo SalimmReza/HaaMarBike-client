@@ -23,7 +23,8 @@ const Register = () => {
                 const user = result.user;
                 console.log(user);
                 setError('');
-                navigate(from, { replace: true });
+                // navigate(from, { replace: true });
+                navigate('/')
 
             }).catch((error) => {
                 const errorCode = error.code;

@@ -17,6 +17,7 @@ const Header = () => {
         <li className='font-extrabold text-white  lg:text-black'><Link to='/'>Home</Link></li>
         <li className='font-extrabold text-white lg:text-black'><Link to='/login'>Login</Link></li>
         <li className='font-extrabold text-white lg:text-black'><Link to='/DashBoard'>DashBoard</Link></li>
+        <li className='font-extrabold text-white lg:text-black'><Link to='/blog'>Blogs</Link></li>
         {
             user?.email ?
                 <li className='font-extrabold text-black block lg:hidden'><Link><button
