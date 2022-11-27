@@ -1,4 +1,12 @@
-# Getting Started with Create React App
+# HaaMarBike
+Fearures:
+- firebase authintication system
+- implmented user, seller , admin
+- seller can add as many products as he wishes , if any bought the product it will not show anywhere
+- seller can advertise his/her products
+-only advertise products will show in the home page
+- intigated paymnet system
+- 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
