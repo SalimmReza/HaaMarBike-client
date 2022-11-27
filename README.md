@@ -1,5 +1,12 @@
 # HaaMarBike
 ## LiveLink: https://assignment12-9d6d1.web.app/ 
+
+admin email : salim@gmail.com
+password: 123456
+or
+admin email : salimre@gmail.com
+password: 123456
+
 Fearures:
 - firebase authintication system
 - implmented user, seller , admin
