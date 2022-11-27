@@ -126,7 +126,7 @@ const AddProducts = ({ email }) => {
                                         <label className="label">
                                             <span className="label-text">Original Price: $ </span>
                                         </label>
-                                        <input type="text" name='original_Price'
+                                        <input type="number" name='original_Price'
                                             placeholder='Original Price'
                                             className="input input-bordered" required />
                                     </div>
@@ -134,7 +134,7 @@ const AddProducts = ({ email }) => {
                                         <label className="label">
                                             <span className="label-text">Resale Price: $ </span>
                                         </label>
-                                        <input type="text"
+                                        <input type="number"
                                             placeholder='Resale Price'
                                             name='resale_price' className="input input-bordered" required />
                                     </div>

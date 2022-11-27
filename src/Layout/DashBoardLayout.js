@@ -44,42 +44,40 @@ const DashBoardLayout = ({ sel }) => {
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 bg-base-100 text-base-content">
 
-                        <li><Link to='/dashboard'>My Bookings</Link></li>
-                        <li><Link to='/dashboard/addProducts'>Add Products</Link></li>
-
-
-
-
-                        <li><Link to='/dashboard/myProducts'>My Products</Link></li>
-                        <li><Link to='/dashboard/allSellers'>All Sellers</Link></li>
-                        <li><Link to='/dashboard/allBuyers'>All Buyers</Link></li>
-                        <li><Link to='/dashboard/wishlist'>My Wishlist</Link></li>
-
-
-
-                        <li><Link to='/dashboard/allBuyers'>all</Link></li>
-                        {/* {
+                        {
                             checkUsers.isSeller &&
+                            <>
+                                <li><Link to='/dashboard/addProducts'>Add Products</Link></li>
+                                <li><Link to='/dashboard/myProducts'>My Products</Link></li>
+                            </>
 
-                            <li><Link to='/dashboard/allBuyers'>seller</Link></li>
+
                         }
                         {
                             checkUsers.isUser &&
-                            <li><Link to='/dashboard/allBuyers'>user</Link></li>
+                            <>
+                                <li><Link to='/dashboard'>My Orders</Link></li>
+                                <li><Link to='/dashboard/wishlist'>My Wishlist</Link></li>
+                            </>
                         }
 
                         {
                             checkUsers.isAdmin &&
-                            <li><Link to='/dashboard/allBuyers'>Admin</Link></li>
+                            <>
+                                <li><Link to='/dashboard/allSellers'>All Sellers</Link></li>
+                                <li><Link to='/dashboard/allBuyers'>All Buyers</Link></li>
+                            </>
                         }
 
                         {
-                            user?.emailVerified ? <>
-                                <li><Link to='/dashboard/allBuyers'>user</Link></li>
-                            </> :
+                            user?.emailVerified ?
+                                <>
+                                    <li><Link to='/dashboard'>My Orders</Link></li>
+                                    <li><Link to='/dashboard/wishlist'>My Wishlist</Link></li>
+                                </> :
                                 ""
 
-                        } */}
+                        }
 
 
 

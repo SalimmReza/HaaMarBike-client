@@ -18,15 +18,16 @@ const WishlistDetails = ({ wishlist }) => {
                 if (data.deletedCount > 0) {
                     // refetch();
                     toast.success(`Deleted Successful`)
+                    navigate('/')
 
 
                 }
             })
     }
 
-    // const handleBookNow = (id) => {
-    //     navigate(`/`)
-    // }
+    const handleBookNow = (id) => {
+        navigate(`/`)
+    }
     return (
         <div>
             <div className="card card-compact w-80 bg-white text-black shadow-xl">
@@ -40,9 +41,9 @@ const WishlistDetails = ({ wishlist }) => {
                         <button
                             onClick={() => handleDelete(_id)}
                             className="btn bg-red-500 text-white">Remove</button>
-                        {/* <button
+                        <button
                             onClick={() => handleBookNow(_id)}
-                            className="btn bg-red-500 text-white">Book Now</button> */}
+                            className="btn bg-red-500 text-white">Book Now</button>
                     </div>
                 </div>
             </div>

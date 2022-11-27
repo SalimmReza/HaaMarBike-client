@@ -38,7 +38,7 @@ const MyBookings = () => {
     return (
         <div className='lg:w-[70%] lg:mx-auto bg-white'>
 
-            <h1 className='text-black font-semibold text-2xl my-10'>My Bookings</h1>
+            <h1 className='text-black font-semibold text-2xl my-10'>My Orders</h1>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
 

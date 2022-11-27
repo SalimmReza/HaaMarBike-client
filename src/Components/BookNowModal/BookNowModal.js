@@ -85,6 +85,7 @@ const BookNowModal = ({ details, setDetails }) => {
             <input type="checkbox" id="book-nowModal" className="modal-toggle" />
             <div className="modal">
                 <div className="modal-box w-[90%] lg:w-[40%] max-w-5xl">
+                    <label htmlFor="book-nowModal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
 
                     <form onSubmit={handleBookNowSubmit}>
                         <div className="hero  bg-base-200">

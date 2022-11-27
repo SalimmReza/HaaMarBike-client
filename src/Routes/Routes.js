@@ -13,12 +13,14 @@ import Payment from "../Pages/DashBoard/Payment/Payment";
 import Report from "../Pages/DashBoard/Report/Report";
 import Login from "../Pages/Login/Login/Login";
 import Register from '../Pages/Login/Register/Register'
+import Errorpage from "../Shared/Errorpage/Errorpage";
 import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <Errorpage></Errorpage>,
         children: [
             {
                 path: '/',
@@ -48,6 +50,7 @@ export const router = createBrowserRouter([
     {
         path: '/dashBoard',
         element: <PrivateRoute><DashBoardLayout></DashBoardLayout></PrivateRoute>,
+        errorElement: <Errorpage></Errorpage>,
         children: [
             {
                 path: '/dashBoard',
