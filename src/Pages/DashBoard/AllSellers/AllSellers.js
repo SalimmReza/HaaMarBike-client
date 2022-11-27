@@ -37,7 +37,7 @@ const AllSellers = () => {
     }
 
     const handleVerify = (id) => {
-        console.log(id);
+        // console.log(id);
         fetch(`http://localhost:5000/users/${id}`, {
             method: 'PUT',
         })

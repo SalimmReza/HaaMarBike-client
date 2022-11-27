@@ -13,7 +13,7 @@ const MyProducts = () => {
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/category?email=${user?.email}`)
             const data = await res.json()
-            // console.log(category);
+            console.log(category);
 
             return data;
 
@@ -101,15 +101,39 @@ const MyProducts = () => {
                                             className="btn bg-red-600 btn-xs">Delete</button>
                                     </th>
                                     <th>
+                                        {/* <button className="btn bg-yellow-600 btn-xs">Advertised</button> */}
+
+
+
 
                                         {
-                                            category.advertise ? <button
-                                                className="btn bg-yellow-600 btn-xs">Advertised</button>
+                                            category?.advertise ?
+                                                <>
+                                                    {
+                                                        category?.paid ?
+                                                            <>
+                                                                <button className="btn bg-yellow-600 btn-xs">Sold</button>
+                                                            </>
+                                                            :
+                                                            <>
+                                                                <button className="btn bg-yellow-600 btn-xs">Advertised</button>
+                                                            </>
+                                                    }
+                                                </>
                                                 :
-                                                <button
-                                                    onClick={() => handleAdvertise(category._id)}
-                                                    className="btn bg-green-600 btn-xs">Advertise</button>
+                                                <>
+                                                    <button
+
+                                                        className="btn bg-green-600 btn-xs">Unsold</button>
+
+                                                    <button
+                                                        onClick={() => handleAdvertise(category._id)}
+                                                        className="btn bg-green-600 btn-xs">Advertise</button>
+                                                </>
+
                                         }
+
+
 
                                     </th>
                                 </tr>)

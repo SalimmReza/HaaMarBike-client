@@ -28,7 +28,6 @@ const CategoryDetails2 = ({ CD, setDetails }) => {
 
                 CD?.paid ? "" :
 
-
                     < div className="card bg-slate-100 shadow-xl">
                         <figure><img
                             className='h-[350px] w-full'

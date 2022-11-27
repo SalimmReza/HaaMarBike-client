@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider';
 
@@ -7,7 +8,8 @@ const MyBookings = () => {
 
     const { user } = useContext(AuthContext);
 
-    const { data: bookings = [] } = useQuery({
+    const { data: bookings = [], refetch
+    } = useQuery({
         queryKey: ['booking', user?.email],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/booking?email=${user?.email}`)
@@ -16,6 +18,22 @@ const MyBookings = () => {
             return data;
         }
     })
+
+
+    const handleDelete = id => {
+        console.log(id);
+        fetch(`http://localhost:5000/booking/${id}`, {
+            method: 'DELETE',
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    refetch();
+                    toast.success(`Deleted Successful`)
+
+                }
+            })
+    }
 
     return (
         <div className='lg:w-[70%] lg:mx-auto bg-white'>
@@ -47,6 +65,7 @@ const MyBookings = () => {
                                         </div>
                                         <div>
                                             <div className="font-bold">{booking?.itemName}</div>
+                                            {/* <div className="font-bold">{booking?._id}</div> */}
 
                                         </div>
                                     </div>
@@ -59,9 +78,22 @@ const MyBookings = () => {
                                 <td>{booking?.sellerName}</td>
                                 <th>
 
+
+
                                     {
-                                        booking?.paid ? <Link to={`/dashBoard/payment/${booking._id}`}> <button className="btn bg-green-400 text-white btn-xs">Paid</button></Link> :
-                                            <Link to={`/dashBoard/payment/${booking._id}`}> <button className="btn bg-red-500 text-white btn-xs">Pay</button></Link>
+                                        booking?.paid ?
+                                            <>
+                                                <Link to={`/dashBoard/payment/${booking._id}`}> <button className="btn bg-green-400 text-white btn-xs">Paid</button></Link>
+                                            </>
+                                            :
+
+                                            <>
+                                                <button
+                                                    onClick={() => handleDelete(booking?._id)}
+                                                    className="btn bg-red-600 btn-xs text-white">Remove</button>
+                                                <Link to={`/dashBoard/payment/${booking._id}`}> <button className="btn bg-red-500 text-white btn-xs">Pay</button></Link>
+                                            </>
+
 
                                     }
 
