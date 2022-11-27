@@ -53,6 +53,8 @@ const DashBoardLayout = ({ sel }) => {
                         <li><Link to='/dashboard/myProducts'>My Products</Link></li>
                         <li><Link to='/dashboard/allSellers'>All Sellers</Link></li>
                         <li><Link to='/dashboard/allBuyers'>All Buyers</Link></li>
+                        <li><Link to='/dashboard/wishlist'>My Wishlist</Link></li>
+
 
 
                         <li><Link to='/dashboard/allBuyers'>all</Link></li>

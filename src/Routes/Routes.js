@@ -10,6 +10,7 @@ import AllSellers from "../Pages/DashBoard/AllSellers/AllSellers";
 import MyBookings from "../Pages/DashBoard/MyBookings/MyBookings";
 import MyProducts from "../Pages/DashBoard/MyProducts/MyProducts";
 import Payment from "../Pages/DashBoard/Payment/Payment";
+import Report from "../Pages/DashBoard/Report/Report";
 import Login from "../Pages/Login/Login/Login";
 import Register from '../Pages/Login/Register/Register'
 import PrivateRoute from "./PrivateRoute";
@@ -67,6 +68,12 @@ export const router = createBrowserRouter([
             {
                 path: '/dashBoard/AllBuyers',
                 element: <PrivateRoute><AllBuyers></AllBuyers></PrivateRoute>
+            },
+
+
+            {
+                path: '/dashBoard/wishlist',
+                element: <PrivateRoute><Report></Report></PrivateRoute> //report = wishlist
             },
             {
                 path: '/dashBoard/payment/:id',

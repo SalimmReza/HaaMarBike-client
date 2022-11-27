@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Advertise = ({ advertises }) => {
-    console.log("advertise", advertises);
+    // console.log("advertise", advertises);
     const { image, category_name, item_name } = advertises
 
 
