@@ -6,7 +6,7 @@ const SuportAddProducts = () => {
 
     const [emails, setEmails] = useState({});
     useEffect(() => {
-        fetch(`http://localhost:5000/users`)
+        fetch(`https://assignment-12-server-one.vercel.app/users`)
             .then(res => res.json())
             .then(data => setEmails(data))
 

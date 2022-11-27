@@ -55,7 +55,7 @@ const BookNowModal = ({ details, setDetails }) => {
             location
         }
 
-        fetch(`http://localhost:5000/booking`, {
+        fetch(`https://assignment-12-server-one.vercel.app/booking`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -67,7 +67,7 @@ const BookNowModal = ({ details, setDetails }) => {
                 console.log(data);
                 if (data.acknowledged) {
                     toast.success('Booked')
-                    navigate('/dashBoard')
+                    navigate('/dashBoard/orders')
 
 
                 }

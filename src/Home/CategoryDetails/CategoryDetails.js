@@ -10,7 +10,7 @@ const CategoryDetails = () => {
     const [categoryDetails, setCategoryDetails] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/category?category_id=${state?.id}`)
+        fetch(`https://assignment-12-server-one.vercel.app/category?category_id=${state?.id}`)
             .then(res => res.json())
             .then(data => setCategoryDetails(data))
 
@@ -24,7 +24,7 @@ const CategoryDetails = () => {
 
     const [emails, setEmail] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/users`)
+        fetch(`https://assignment-12-server-one.vercel.app/users`)
             .then(res => res.json())
             .then(data => setEmail(data))
     }, [])

@@ -16,7 +16,7 @@ const DashBoardLayout = ({ sel }) => {
     // console.log(user.emailVerified);
     const [checkUsers, setCheckUsers] = useState({})
     useEffect(() => {
-        fetch(`http://localhost:5000/users/${user?.email}`)
+        fetch(`https://assignment-12-server-one.vercel.app/users/${user?.email}`)
             .then(res => res.json())
             .then(data => setCheckUsers(data))
     }, [user?.email])
@@ -56,7 +56,7 @@ const DashBoardLayout = ({ sel }) => {
                         {
                             checkUsers.isUser &&
                             <>
-                                <li><Link to='/dashboard'>My Orders</Link></li>
+                                <li><Link to='/dashboard/orders'>My Orders</Link></li>
                                 <li><Link to='/dashboard/wishlist'>My Wishlist</Link></li>
                             </>
                         }
@@ -72,7 +72,7 @@ const DashBoardLayout = ({ sel }) => {
                         {
                             user?.emailVerified ?
                                 <>
-                                    <li><Link to='/dashboard'>My Orders</Link></li>
+                                    <li><Link to='/dashboard/orders'>My Orders</Link></li>
                                     <li><Link to='/dashboard/wishlist'>My Wishlist</Link></li>
                                 </> :
                                 ""

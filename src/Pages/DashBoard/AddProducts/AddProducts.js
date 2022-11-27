@@ -40,7 +40,7 @@ const AddProducts = ({ email }) => {
 
 
 
-        fetch(`http://localhost:5000/category`, {
+        fetch(`https://assignment-12-server-one.vercel.app/category`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

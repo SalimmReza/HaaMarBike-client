@@ -14,7 +14,7 @@ const AllSellers = () => {
 
     // const [accountType, setAccountType] = useState('User')
     useEffect(() => {
-        fetch(`http://localhost:5000/users?accountType=seller`)
+        fetch(`https://assignment-12-server-one.vercel.app/users?accountType=seller`)
             .then(res => res.json())
             .then(data => setSellers(data))
 
@@ -23,7 +23,7 @@ const AllSellers = () => {
 
     const handleDelete = id => {
         console.log(id);
-        fetch(`http://localhost:5000/users/${id}`, {
+        fetch(`https://assignment-12-server-one.vercel.app/users/${id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())
@@ -38,7 +38,7 @@ const AllSellers = () => {
 
     const handleVerify = (id) => {
         // console.log(id);
-        fetch(`http://localhost:5000/users/${id}`, {
+        fetch(`https://assignment-12-server-one.vercel.app/users/${id}`, {
             method: 'PUT',
         })
             .then(res => res.json())
@@ -61,36 +61,45 @@ const AllSellers = () => {
 
             <div className='grid  grid-cols-1 md:grid-cols-3  lg:grid-cols-4 mb-10 '>
                 {
-                    sellers.map(seller => <div
-                        className="card w-[300px] bg-base-100 mb-7 shadow-xl"
-                        key={sellers._id}
-                    >
-                        <div className=" bg-white rounded">
-                            <h2 className=" text-black">{seller.name}</h2>
-                            <p className=" text-black">{seller.email}</p>
-                            <div className="flex my-4 gap-10 justify-center">
+                    sellers?.length === 0 ?
+                        <>
+                            <h1 className='text-white'>No Sellers</h1>
+                        </>
+                        :
+                        <>
+                            {
+                                sellers.map(seller => <div
+                                    className="card w-[300px] bg-base-100 mb-7 shadow-xl"
+                                    key={sellers._id}
+                                >
+                                    <div className=" bg-white rounded">
+                                        <h2 className=" text-black">{seller.name}</h2>
+                                        <p className=" text-black">{seller.email}</p>
+                                        <div className="flex my-4 gap-10 justify-center">
 
 
-                                <Button
-                                    handler={() => handleDelete(seller._id)}
-                                    className="btn btn-primary">Delete</Button>
+                                            <Button
+                                                handler={() => handleDelete(seller._id)}
+                                                className="btn btn-primary">Delete</Button>
 
-                                {
-                                    seller.verified ?
-                                        <Button
-                                            className="btn btn-primary bg-yellow-400">Verified <FontAwesomeIcon className='text-green-400 ml-2' icon={faCheckCircle}></FontAwesomeIcon></Button>
+                                            {
+                                                seller.verified ?
+                                                    <Button
+                                                        className="btn btn-primary bg-yellow-400">Verified <FontAwesomeIcon className='text-green-400 ml-2' icon={faCheckCircle}></FontAwesomeIcon></Button>
 
-                                        :
-                                        <Button
-                                            handler={() => handleVerify(seller._id)}
-                                            className="btn btn-primary">UnVerified</Button>
-                                }
+                                                    :
+                                                    <Button
+                                                        handler={() => handleVerify(seller._id)}
+                                                        className="btn btn-primary">UnVerified</Button>
+                                            }
 
 
 
-                            </div>
-                        </div>
-                    </div>)
+                                        </div>
+                                    </div>
+                                </div>)
+                            }
+                        </>
                 }
             </div>
 

@@ -11,7 +11,7 @@ const Report = () => {
     } = useQuery({
         queryKey: ['wishilists', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/wishlist?email=${user?.email}`)
+            const res = await fetch(`https://assignment-12-server-one.vercel.app/wishlist?email=${user?.email}`)
             const data = await res.json()
             // console.log(bookings);
             return data;
@@ -26,11 +26,23 @@ const Report = () => {
     return (
         <div className='grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-10  p-20'>
             {
-                wishlists &&
-                wishlists?.map(wishlist => <WishlistDetails
-                    key={wishlist._id}
-                    wishlist={wishlist}
-                ></WishlistDetails>)
+                wishlists?.length === 0 ?
+                    <>
+                        < h1 className='text-white' > No Wish List</h1>
+                    </>
+                    :
+                    <>
+
+                        {
+                            wishlists &&
+                            wishlists?.map(wishlist => <WishlistDetails
+                                key={wishlist._id}
+                                wishlist={wishlist}
+                            ></WishlistDetails>)
+
+                        }
+
+                    </>
 
             }
 

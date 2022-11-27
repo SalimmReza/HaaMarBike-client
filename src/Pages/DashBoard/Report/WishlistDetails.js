@@ -10,7 +10,7 @@ const WishlistDetails = ({ wishlist }) => {
 
     const handleDelete = id => {
         console.log(id);
-        fetch(`http://localhost:5000/wishlist/${id}`, {
+        fetch(`https://assignment-12-server-one.vercel.app/wishlist/${id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())
@@ -30,6 +30,7 @@ const WishlistDetails = ({ wishlist }) => {
     }
     return (
         <div>
+
             <div className="card card-compact w-80 bg-white text-black shadow-xl">
                 <figure><img
                     className='h-[200px] w-full'
@@ -47,6 +48,8 @@ const WishlistDetails = ({ wishlist }) => {
                     </div>
                 </div>
             </div>
+
+
         </div >
     );
 };

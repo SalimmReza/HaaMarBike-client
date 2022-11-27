@@ -84,7 +84,7 @@ const Register = () => {
 
     const sendUserToDB = (name, email, accountType) => {
         const user = { name, email, accountType }
-        fetch(`http://localhost:5000/users`, {
+        fetch(`https://assignment-12-server-one.vercel.app/users`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -9,7 +9,7 @@ const AllBuyers = () => {
     const { user } = useContext(AuthContext);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/users?accountType=user`)
+        fetch(`https://assignment-12-server-one.vercel.app/users?accountType=user`)
             .then(res => res.json())
             .then(data => setBuyers(data))
 
@@ -19,7 +19,7 @@ const AllBuyers = () => {
 
     const handleDelete = id => {
         console.log(id);
-        fetch(`http://localhost:5000/users/${id}`, {
+        fetch(`https://assignment-12-server-one.vercel.app/users/${id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())
@@ -37,22 +37,31 @@ const AllBuyers = () => {
 
             <div className='grid  grid-cols-1  lg:grid-cols-4 '>
                 {
-                    buyers.map(buyer => <div
-                        className="card w-[300px] bg-base-100 shadow-xl mb-7"
-                        key={buyer._id}
-                    >
-                        <div className=" bg-white rounded mb-3">
-                            <h2 className=" text-black">{buyer.name}</h2>
-                            <p className=" text-black">{buyer.email}</p>
-                            <div className="flex my-4 gap-10 justify-center">
-                                <Button
-                                    handler={() => handleDelete(buyer._id)}
-                                    className="btn btn-primary">Delete</Button>
+                    buyers?.length === 0 ?
+                        <>
+                            <h1 className='text-white'>No Buyers</h1>
+                        </>
+                        :
+                        <>
+                            {
+                                buyers.map(buyer => <div
+                                    className="card w-[300px] bg-base-100 shadow-xl mb-7"
+                                    key={buyer._id}
+                                >
+                                    <div className=" bg-white rounded mb-3">
+                                        <h2 className=" text-black">{buyer.name}</h2>
+                                        <p className=" text-black">{buyer.email}</p>
+                                        <div className="flex my-4 gap-10 justify-center">
+                                            <Button
+                                                handler={() => handleDelete(buyer._id)}
+                                                className="btn btn-primary">Delete</Button>
 
 
-                            </div>
-                        </div>
-                    </div>)
+                                        </div>
+                                    </div>
+                                </div>)
+                            }
+                        </>
                 }
             </div>
 

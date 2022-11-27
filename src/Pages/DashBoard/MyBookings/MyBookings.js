@@ -12,7 +12,7 @@ const MyBookings = () => {
     } = useQuery({
         queryKey: ['booking', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/booking?email=${user?.email}`)
+            const res = await fetch(`https://assignment-12-server-one.vercel.app/booking?email=${user?.email}`)
             const data = await res.json()
             // console.log(bookings);
             return data;
@@ -22,7 +22,7 @@ const MyBookings = () => {
 
     const handleDelete = id => {
         console.log(id);
-        fetch(`http://localhost:5000/booking/${id}`, {
+        fetch(`https://assignment-12-server-one.vercel.app/booking/${id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())
@@ -53,52 +53,61 @@ const MyBookings = () => {
                     </thead>
                     <tbody>
                         {
-                            bookings &&
-                            bookings?.map((booking, i) => <tr>
-
-                                <td>
-                                    <div className="flex items-center space-x-3">
-                                        <div className="avatar">
-                                            <div className="mask mask-squircle w-12 h-12">
-                                                <img src={booking?.image} alt="" />
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div className="font-bold">{booking?.itemName}</div>
-                                            {/* <div className="font-bold">{booking?._id}</div> */}
-
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    {booking?.resalePrice}
-                                    <br />
-
-                                </td>
-                                <td>{booking?.sellerName}</td>
-                                <th>
-
-
-
+                            bookings?.length === 0 ?
+                                <>
+                                    <h1 className='text-black'>No Orders</h1>
+                                </>
+                                :
+                                <>
                                     {
-                                        booking?.paid ?
-                                            <>
-                                                <Link to={`/dashBoard/payment/${booking._id}`}> <button className="btn bg-green-400 text-white btn-xs">Paid</button></Link>
-                                            </>
-                                            :
+                                        bookings &&
+                                        bookings?.map((booking, i) => <tr>
 
-                                            <>
-                                                <button
-                                                    onClick={() => handleDelete(booking?._id)}
-                                                    className="btn bg-red-600 btn-xs text-white">Remove</button>
-                                                <Link to={`/dashBoard/payment/${booking._id}`}> <button className="btn bg-red-500 text-white btn-xs">Pay</button></Link>
-                                            </>
+                                            <td>
+                                                <div className="flex items-center space-x-3">
+                                                    <div className="avatar">
+                                                        <div className="mask mask-squircle w-12 h-12">
+                                                            <img src={booking?.image} alt="" />
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div className="font-bold">{booking?.itemName}</div>
+                                                        {/* <div className="font-bold">{booking?._id}</div> */}
+
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                {booking?.resalePrice}
+                                                <br />
+
+                                            </td>
+                                            <td>{booking?.sellerName}</td>
+                                            <th>
 
 
+
+                                                {
+                                                    booking?.paid ?
+                                                        <>
+                                                            <Link to={`/dashBoard/payment/${booking._id}`}> <button className="btn bg-green-400 text-white btn-xs">Paid</button></Link>
+                                                        </>
+                                                        :
+
+                                                        <>
+                                                            <button
+                                                                onClick={() => handleDelete(booking?._id)}
+                                                                className="btn bg-red-600 btn-xs text-white">Remove</button>
+                                                            <Link to={`/dashBoard/payment/${booking._id}`}> <button className="btn bg-red-500 text-white btn-xs">Pay</button></Link>
+                                                        </>
+
+
+                                                }
+
+                                            </th>
+                                        </tr>)
                                     }
-
-                                </th>
-                            </tr>)
+                                </>
 
                         }
 

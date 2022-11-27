@@ -41,7 +41,7 @@ const CategoryDetails2 = ({ CD, setDetails }) => {
         }
         console.log(infos)
 
-        fetch(`http://localhost:5000/wishlist`, {
+        fetch(`https://assignment-12-server-one.vercel.app/wishlist`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

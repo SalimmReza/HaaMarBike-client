@@ -3,7 +3,7 @@ import './Carousel.css'
 
 const Carousel = () => {
     return (
-        <div className='banner'>
+        <div className='banner mt-10'>
             <div className="banner-highlights">
                 <div className="">
 
@@ -11,9 +11,6 @@ const Carousel = () => {
                         <h2 className='text-4xl'>Get 30% on our Advertised Products</h2>
                         <p>Book  before 31th this month and get 30% off.</p>
                     </div>
-
-
-
                 </div>
             </div>
         </div>
